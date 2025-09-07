@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://doex4rfhhnku1"]
+
+[ext_resource type="Script" path="res://Battle/Zones/CardZones/Deck.cs" id="1_e6r43"]
+
+[node name="Deck" type="PanelContainer" node_paths=PackedStringArray("cardContainer")]
+size_flags_horizontal = 3
+script = ExtResource("1_e6r43")
+cardContainer = NodePath("VBoxContainer")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "DECK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -82
+alignment = 1

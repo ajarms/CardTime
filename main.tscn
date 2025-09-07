@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3ok4sx4dthsl"]
+[gd_scene load_steps=8 format=3 uid="uid://b3ok4sx4dthsl"]
 
 [ext_resource type="PackedScene" uid="uid://dof04qgnryopk" path="res://Battle/Zones/CardZones/hand.tscn" id="1_c1jhx"]
 [ext_resource type="Script" path="res://Battle/BattleController.cs" id="1_qkca7"]
 [ext_resource type="Script" path="res://Battle/Zones/EffectsArea.cs" id="1_u5v2u"]
-[ext_resource type="Script" path="res://Battle/Zones/CardZones/Discard.cs" id="2_4ur53"]
-[ext_resource type="PackedScene" uid="uid://rjtlttjubqxr" path="res://Cards/card.tscn" id="2_lk0ki"]
-[ext_resource type="Script" path="res://Battle/Zones/CardZones/PlayArea.cs" id="2_qwjck"]
-[ext_resource type="Script" path="res://Battle/Zones/SigilArea.cs" id="3_d7txb"]
-[ext_resource type="Script" path="res://Battle/Zones/CardZones/Deck.cs" id="4_rok7x"]
+[ext_resource type="PackedScene" uid="uid://dryp0xhf1n3h7" path="res://Battle/Zones/CardZones/play_area.tscn" id="3_xy86u"]
+[ext_resource type="PackedScene" uid="uid://cly87ryxb24ct" path="res://Battle/Zones/sigil_area.tscn" id="4_w2rcq"]
+[ext_resource type="PackedScene" uid="uid://doex4rfhhnku1" path="res://Battle/Zones/CardZones/deck.tscn" id="6_pqndy"]
+[ext_resource type="PackedScene" uid="uid://dqid4va2qnq6l" path="res://Battle/Zones/CardZones/discard.tscn" id="7_4h6v4"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -82,54 +81,11 @@ text = "EFFECTS"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlayArea" type="PanelContainer" parent="BattleController/BattleUI/Middle" node_paths=PackedStringArray("cardContainer")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.5
-script = ExtResource("2_qwjck")
-cardContainer = NodePath("HFlowContainer")
-
-[node name="Label" type="Label" parent="BattleController/BattleUI/Middle/PlayArea"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "PLAY AREA
-"
-
-[node name="HFlowContainer" type="HFlowContainer" parent="BattleController/BattleUI/Middle/PlayArea"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = -20
-theme_override_constants/v_separation = -30
-alignment = 1
-last_wrap_alignment = 1
-
-[node name="Card" parent="BattleController/BattleUI/Middle/PlayArea/HFlowContainer" instance=ExtResource("2_lk0ki")]
+[node name="PlayArea" parent="BattleController/BattleUI/Middle" instance=ExtResource("3_xy86u")]
 layout_mode = 2
 
-[node name="Card2" parent="BattleController/BattleUI/Middle/PlayArea/HFlowContainer" instance=ExtResource("2_lk0ki")]
+[node name="SigilArea" parent="BattleController/BattleUI/Middle" instance=ExtResource("4_w2rcq")]
 layout_mode = 2
-
-[node name="Card3" parent="BattleController/BattleUI/Middle/PlayArea/HFlowContainer" instance=ExtResource("2_lk0ki")]
-layout_mode = 2
-
-[node name="SigilArea" type="PanelContainer" parent="BattleController/BattleUI/Middle" node_paths=PackedStringArray("sigilContainer")]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("3_d7txb")
-sigilContainer = NodePath("Container")
-
-[node name="Label" type="Label" parent="BattleController/BattleUI/Middle/SigilArea"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "SIGILS"
-
-[node name="Container" type="CenterContainer" parent="BattleController/BattleUI/Middle/SigilArea"]
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Bottom" type="HBoxContainer" parent="BattleController/BattleUI"]
 layout_mode = 2
@@ -138,64 +94,30 @@ size_flags_vertical = 3
 [node name="Hand" parent="BattleController/BattleUI/Bottom" instance=ExtResource("1_c1jhx")]
 layout_mode = 2
 
-[node name="Deck" type="PanelContainer" parent="BattleController/BattleUI/Bottom" node_paths=PackedStringArray("cardContainer")]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("4_rok7x")
-cardContainer = NodePath("VBoxContainer")
-
-[node name="Label" type="Label" parent="BattleController/BattleUI/Bottom/Deck"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "DECK"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BattleController/BattleUI/Bottom/Deck"]
-layout_mode = 2
-theme_override_constants/separation = -82
-alignment = 1
-
-[node name="Discard" type="PanelContainer" parent="BattleController/BattleUI/Bottom" node_paths=PackedStringArray("cardContainer")]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("2_4ur53")
-cardContainer = NodePath("VBoxContainer")
-
-[node name="Label" type="Label" parent="BattleController/BattleUI/Bottom/Discard"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "DISCARD"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BattleController/BattleUI/Bottom/Discard"]
-layout_mode = 2
-theme_override_constants/separation = -82
-alignment = 1
-
-[node name="Card" parent="BattleController/BattleUI/Bottom/Discard/VBoxContainer" instance=ExtResource("2_lk0ki")]
+[node name="Deck" parent="BattleController/BattleUI/Bottom" instance=ExtResource("6_pqndy")]
 layout_mode = 2
 
-[node name="Card2" parent="BattleController/BattleUI/Bottom/Discard/VBoxContainer" instance=ExtResource("2_lk0ki")]
+[node name="Discard" parent="BattleController/BattleUI/Bottom" instance=ExtResource("7_4h6v4")]
 layout_mode = 2
 
-[node name="Card3" parent="BattleController/BattleUI/Bottom/Discard/VBoxContainer" instance=ExtResource("2_lk0ki")]
-layout_mode = 2
-
-[node name="Card4" parent="BattleController/BattleUI/Bottom/Discard/VBoxContainer" instance=ExtResource("2_lk0ki")]
-layout_mode = 2
-
-[node name="Card5" parent="BattleController/BattleUI/Bottom/Discard/VBoxContainer" instance=ExtResource("2_lk0ki")]
-layout_mode = 2
-
-[node name="GRIMOIRE" type="PanelContainer" parent="BattleController/BattleUI/Bottom"]
+[node name="Grimoire" type="PanelContainer" parent="BattleController/BattleUI/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="Label" type="Label" parent="BattleController/BattleUI/Bottom/GRIMOIRE"]
+[node name="Label" type="Label" parent="BattleController/BattleUI/Bottom/Grimoire"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "GRIMOIRE"
 
+[connection signal="CardResolved" from="BattleController/BattleUI/Middle/PlayArea" to="BattleController/BattleUI/Bottom/Discard" method="OnPlayAreaCardResolved"]
+[connection signal="DiscardCard" from="BattleController/BattleUI/Bottom/Hand" to="BattleController/BattleUI/Bottom/Discard" method="OnHandDiscardCard"]
+[connection signal="InscribeSigil" from="BattleController/BattleUI/Bottom/Hand" to="BattleController/BattleUI/Middle/SigilArea" method="OnHandInscribeSigil"]
+[connection signal="PlayCard" from="BattleController/BattleUI/Bottom/Hand" to="BattleController/BattleUI/Middle/PlayArea" method="OnHandPlayCard"]
+[connection signal="ReturnToDeck" from="BattleController/BattleUI/Bottom/Hand" to="BattleController/BattleUI/Bottom/Deck" method="OnHandReturnToDeck"]
 [connection signal="CardDrawn" from="BattleController/BattleUI/Bottom/Deck" to="BattleController/BattleUI/Bottom/Hand" method="OnDeckCardDrawn"]
+[connection signal="Emptied" from="BattleController/BattleUI/Bottom/Deck" to="BattleController/BattleUI/Bottom/Discard" method="OnDeckEmptied"]
+[connection signal="MillCard" from="BattleController/BattleUI/Bottom/Deck" to="BattleController/BattleUI/Bottom/Discard" method="OnDeckMillCard"]
+[connection signal="ReturnToDeck" from="BattleController/BattleUI/Bottom/Discard" to="BattleController/BattleUI/Bottom/Deck" method="OnDiscardReturnToDeck"]
+[connection signal="ReturnToHand" from="BattleController/BattleUI/Bottom/Discard" to="BattleController/BattleUI/Bottom/Hand" method="OnDiscardReturnToHand"]

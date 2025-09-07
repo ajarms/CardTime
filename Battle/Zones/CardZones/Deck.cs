@@ -50,26 +50,40 @@ public partial class Deck : CardZone
     {
         cardContainer.GetChildren().Shuffle();
         EmitSignal(SignalName.Shuffle);
+        if (waitingDraws > 0)
+        {
+            DrawCards(waitingDraws);
+            waitingDraws = 0;
+        }
     }
 
+    private int waitingDraws = 0;
+    public void DrawCards(int count = 1)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (Empty)
+            {
+                // signal and wait for shuffle
+                EmitSignal(SignalName.Emptied, this);
+                waitingDraws = count - i;
+                return;
+            }
+            
+            // flip up when drawn
+            Card c = GetCard();
+            c.FlipCard(true);
+            EmitSignal(SignalName.CardDrawn, c);
+        }
+    }
+    
     public void MillCards(int count = 1)
     {
         for (int i = 0; i < count; i++)
         {
             var c = GetCard();
             c.FlipCard(true);
-            this.EmitSignal(SignalName.MillCard, c);
-        }
-    }
-
-    public void DrawCards(int count = 1)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            // flip up when drawn
-            Card c = this.GetCard();
-            c.FlipCard(true);
-            EmitSignal(SignalName.CardDrawn, c);
+            EmitSignal(SignalName.MillCard, c);
         }
     }
 }
