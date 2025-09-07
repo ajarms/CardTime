@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dof04qgnryopk"]
+
+[ext_resource type="Script" path="res://Battle/Zones/CardZones/Hand.cs" id="1_bcx1a"]
+
+[node name="Hand" type="PanelContainer" node_paths=PackedStringArray("cardContainer")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -160.0
+offset_right = 375.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_bcx1a")
+cardContainer = NodePath("ScrollContainer/HFlowContainer")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "HAND"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+follow_focus = true
+vertical_scroll_mode = 0
+scroll_deadzone = 1
+
+[node name="HFlowContainer" type="HBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1

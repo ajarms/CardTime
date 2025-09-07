@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://rjtlttjubqxr"]
+
+[ext_resource type="Script" path="res://Cards/Card.cs" id="1_q36rq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iosnw"]
+font_color = Color(0.000113828, 0.000113828, 0.000113828, 1)
+
+[node name="Card" type="Control" node_paths=PackedStringArray("CardFront", "CardBack", "NameLabel")]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 40)
+script = ExtResource("1_q36rq")
+CardFront = NodePath("AspectRatioContainer/FrontContainer")
+CardBack = NodePath("AspectRatioContainer/BackContainer")
+NameLabel = NodePath("AspectRatioContainer/FrontContainer/Name")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 0.75
+
+[node name="Border" type="ColorRect" parent="AspectRatioContainer"]
+layout_mode = 2
+color = Color(0.435873, 0.188352, 0.00721432, 1)
+
+[node name="FrontContainer" type="MarginContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Background" type="ColorRect" parent="AspectRatioContainer/FrontContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="AspectRatioContainer/FrontContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Card
+"
+label_settings = SubResource("LabelSettings_iosnw")
+horizontal_alignment = 1
+
+[node name="BackContainer" type="MarginContainer" parent="AspectRatioContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Background" type="ColorRect" parent="AspectRatioContainer/BackContainer"]
+layout_mode = 2
+color = Color(0.243614, 0.436902, 0.426915, 1)
+
+[node name="Background2" type="ColorRect" parent="AspectRatioContainer/BackContainer/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -22.0
+offset_right = 49.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.436332
+scale = Vector2(0.5, 0.5)
+color = Color(0.257279, 0.220116, 0.115343, 1)
