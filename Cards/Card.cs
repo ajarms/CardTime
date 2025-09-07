@@ -14,7 +14,8 @@ public partial class Card : Control
 	[Export]
 	public Label NameLabel { get; set; }
 
-	public Card() {
+	public Card()
+	{
 		Data = new CardData();
 	}
 
@@ -23,20 +24,19 @@ public partial class Card : Control
 		Data = data;
 	}
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		NameLabel.Text = Data?.CardName ?? "Test";
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 
 	public void FlipCard(bool up)
 	{
 		CardFront.Visible = up;
 		CardBack.Visible = !up;
+	}
+
+	public void Resolve()
+	{
+		GD.Print($"Resolving {Data.CardName}");
 	}
 }
