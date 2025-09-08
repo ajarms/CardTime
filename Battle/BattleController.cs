@@ -12,4 +12,6 @@ public partial class BattleController : Control
 
         DeckNode.DrawCards(5);
     }
+
+    // TODO user input
 }

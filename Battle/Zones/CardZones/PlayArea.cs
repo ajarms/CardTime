@@ -16,6 +16,8 @@ public partial class PlayArea : CardZone
     {
         AddCard(card);
         card.Resolve();
+        // TODO pass control to card,
+        // wait for a returning signal before emitting CardResolved
         EmitSignal(SignalName.CardResolved, card);
     }
 }
