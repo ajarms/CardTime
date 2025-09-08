@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqid4va2qnq6l"]
+[gd_scene load_steps=2 format=3 uid="uid://dqid4va2qnq6l"]
 
 [ext_resource type="Script" path="res://Battle/Zones/CardZones/Discard.cs" id="1_piclh"]
-[ext_resource type="PackedScene" uid="uid://rjtlttjubqxr" path="res://Cards/card.tscn" id="2_qafke"]
 
 [node name="Discard" type="PanelContainer" node_paths=PackedStringArray("cardContainer")]
 size_flags_horizontal = 3
@@ -18,18 +17,3 @@ text = "DISCARD"
 layout_mode = 2
 theme_override_constants/separation = -82
 alignment = 1
-
-[node name="Card" parent="VBoxContainer" instance=ExtResource("2_qafke")]
-layout_mode = 2
-
-[node name="Card2" parent="VBoxContainer" instance=ExtResource("2_qafke")]
-layout_mode = 2
-
-[node name="Card3" parent="VBoxContainer" instance=ExtResource("2_qafke")]
-layout_mode = 2
-
-[node name="Card4" parent="VBoxContainer" instance=ExtResource("2_qafke")]
-layout_mode = 2
-
-[node name="Card5" parent="VBoxContainer" instance=ExtResource("2_qafke")]
-layout_mode = 2

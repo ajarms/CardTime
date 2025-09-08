@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dryp0xhf1n3h7"]
+[gd_scene load_steps=2 format=3 uid="uid://dryp0xhf1n3h7"]
 
 [ext_resource type="Script" path="res://Battle/Zones/CardZones/PlayArea.cs" id="1_tkk60"]
-[ext_resource type="PackedScene" uid="uid://rjtlttjubqxr" path="res://Cards/card.tscn" id="2_bg54m"]
 
 [node name="PlayArea" type="PanelContainer" node_paths=PackedStringArray("cardContainer")]
 size_flags_horizontal = 3
@@ -25,12 +24,3 @@ theme_override_constants/h_separation = -20
 theme_override_constants/v_separation = -30
 alignment = 1
 last_wrap_alignment = 1
-
-[node name="Card" parent="HFlowContainer" instance=ExtResource("2_bg54m")]
-layout_mode = 2
-
-[node name="Card2" parent="HFlowContainer" instance=ExtResource("2_bg54m")]
-layout_mode = 2
-
-[node name="Card3" parent="HFlowContainer" instance=ExtResource("2_bg54m")]
-layout_mode = 2
