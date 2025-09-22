@@ -1,17 +1,16 @@
 
-using System.Collections.Generic;
-
 public class PlayerTurn : Turn
 {
+    public override string Name => "Player";
 
-    public PlayerTurn() : base(new List<Phase> {
-        new StartTurnPhase(),
+    public PlayerTurn() : base(new Phase[] {
+        new StartPhase(),
         new DrawPhase(),
         new MainPhase() })
     { }
 }
 
-public class StartTurnPhase : Phase
+public class StartPhase : Phase
 {
     public override string Name => "Start";
 }
