@@ -70,6 +70,11 @@ public abstract class Phase : TurnLog
         // default phase execution, none!
     }
 
+    // TODO could define IF and WHICH inputs a phase handles on an abstract property
+    // or virtual defaulting to an empty array (vs an array of enums representing inputs)
+    // That way, can wrap handle input in a function that will check this prop, and only
+    // if input is handled, log it and pass it on
+
     public virtual void HandleInput(int PlaceholderInputKey)
     {
         // default input handling, no handling!
