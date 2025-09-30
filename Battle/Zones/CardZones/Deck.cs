@@ -39,11 +39,10 @@ public partial class Deck : CardZone
     }
 
     // Override to add cards face-down
-    public override int AddCard(Card c)
+    public override void AddCard(Card c)
     {
-        var count = base.AddCard(c);
         c.FlipCard(false);
-        return count;
+        base.AddCard(c);
     }
 
     public void ShuffleDeck()

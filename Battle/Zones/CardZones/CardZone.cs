@@ -1,3 +1,4 @@
+using System.Threading;
 using Godot;
 
 // Base class for card zones like hand, deck, etc
@@ -7,10 +8,20 @@ public abstract partial class CardZone : Control
     [Export]
     protected Container cardContainer = null;
 
-    public bool Empty => cardContainer.GetChildCount() == 0;
+    public int Count => cardContainer?.GetChildCount() ?? 0;
+    public bool Empty => Count == 0;
 
-    public virtual int AddCard(Card c)
+    public override void _Ready()
     {
+        if (cardContainer == null)
+        {
+            GD.PrintErr($"{this.GetType()} card container not configured in scene tree.");
+        }
+    }
+
+    public virtual void AddCard(Card c)
+    {
+        // Thread.Sleep(100);
         if (c.GetParent() == null)
         {
             cardContainer.AddChild(c);
@@ -19,7 +30,6 @@ public abstract partial class CardZone : Control
         {
             c.Reparent(cardContainer);
         }
-        return cardContainer.GetChildCount();
     }
 
     public virtual Card GetCard(int index = 0)

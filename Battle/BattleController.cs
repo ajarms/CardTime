@@ -8,9 +8,16 @@ public partial class BattleController : Control
 
     public override void _Ready()
     {
+        StartGame();
+    }
+
+    public void StartGame()
+    {
         DeckNode.Initialize(PlayerManager.Instance.GetPlayerDeck());
 
         DeckNode.DrawCards(5);
+        
+        // begin turn sequence
     }
 
     // TODO user input
