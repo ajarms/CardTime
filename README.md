@@ -1,6 +1,8 @@
 # CardTime
 CARD. TIME.
 
+Experimenting with the structure for a simple flexible card game in the Godot engine using C#
+
 TODO
 - [ ] Player Inputs
     - [ ] Card Container Drag-n-Drop
